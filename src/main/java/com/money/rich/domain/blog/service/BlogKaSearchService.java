@@ -12,7 +12,7 @@ import org.springframework.util.ObjectUtils;
 
 import com.money.rich.common.response.SearchApiResult;
 import com.money.rich.common.utility.SearchUtils;
-import com.money.rich.domain.blog.dto.BlogSearchRequestVo;
+import com.money.rich.domain.blog.dto.BlogSearchRequestDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,7 +23,7 @@ public class BlogKaSearchService {
 	private final static String AUTHORIZATION = "593f030fcad658d7dfa0909b0b9f2823";
 	private final static String BLOG_SEARCH_API = "https://dapi.kakao.com/v2/search/blog";
 
-	public SearchApiResult kApiResponse(final BlogSearchRequestVo request) {
+	public SearchApiResult kApiResponse(final BlogSearchRequestDto request) {
 		try {
 			Map<String, String> requestHeaders = new HashMap<>();
 			requestHeaders.put("Authorization", "KakaoAK "+AUTHORIZATION);

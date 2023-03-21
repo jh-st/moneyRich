@@ -17,7 +17,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class BlogSearchRequestVo {
+public class BlogSearchRequestDto {
 
 	@NotEmpty(message = "검색어를 입력해 주세요.")
 	private String query;

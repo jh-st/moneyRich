@@ -15,7 +15,7 @@ import org.springframework.util.ObjectUtils;
 import com.money.rich.common.response.SearchApiResult;
 import com.money.rich.common.utility.SearchUtils;
 import com.money.rich.common.variable.Sorting;
-import com.money.rich.domain.blog.dto.BlogSearchRequestVo;
+import com.money.rich.domain.blog.dto.BlogSearchRequestDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -27,7 +27,7 @@ public class BlogNaSearchService {
 	private final static String CLIENT_SECRET = "8Gd7t8bzR8";
 	private final static String BLOG_SEARCH_API = "https://openapi.naver.com/v1/search/blog.json";
 
-	public SearchApiResult nApiResponse(final BlogSearchRequestVo request) {
+	public SearchApiResult nApiResponse(final BlogSearchRequestDto request) {
 		try {
 			Map<String, String> requestHeaders = new HashMap<>();
 			requestHeaders.put("X-Naver-Client-Id", CLIENT_ID);
