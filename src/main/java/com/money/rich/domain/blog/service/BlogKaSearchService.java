@@ -28,15 +28,12 @@ public class BlogKaSearchService {
 			Map<String, String> requestHeaders = new HashMap<>();
 			requestHeaders.put("Authorization", "KakaoAK "+AUTHORIZATION);
 
-
 			final String text = URLEncoder.encode(ObjectUtils.nullSafeToString(request.getQuery()), StandardCharsets.UTF_8);
 			final String sort = request.getSort();
 			final String param = "?query="+text
 				+"&sort="+sort
 				+"&page="+request.getPage()
 				+"&size="+request.getSize();
-
-
 
 			return SearchUtils.get(KAKAO.getText(), BLOG_SEARCH_API+param, requestHeaders);
 
