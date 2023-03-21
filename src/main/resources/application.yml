@@ -27,3 +27,9 @@ spring:
       ddl-auto: create
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true

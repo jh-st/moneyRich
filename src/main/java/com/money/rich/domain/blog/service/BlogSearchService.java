@@ -42,13 +42,14 @@ public class BlogSearchService {
 
 	public SearchApiResult getBlogs(final BlogSearchRequestDto request) {
 		SearchApiResult blog = blogKaSearchService.kApiResponse(request);
-		if (blog.getResponseCode() == 500) {
+		boolean isError = getError(blog.getResponseCode());
+		if (isError) {
 			blog = blogNaSearchService.nApiResponse(request);
 		}
-		if (blog.getResponseCode() == 500) {
+		if (isError) {
 			return new SearchApiResult();
 		}
-		return blogNaSearchService.nApiResponse(request);
+		return blog;
 	}
 
 	public void applyKeyword(final BlogSearchRequestDto request) {
@@ -57,7 +58,9 @@ public class BlogSearchService {
 			keywordService.hits(byKeyword.get());
 		} else {
 			keywordService.post(PopularKeywordSaveDto.builder()
-				.keyword(request.getQuery()).hit(1).build());
+				.keyword(request.getQuery())
+				.hit(1)
+				.build());
 		}
 	}
 
@@ -133,5 +136,9 @@ public class BlogSearchService {
 		} else {
 			return new ArrayList<>();
 		}
+	}
+
+	private boolean getError(Integer responseCode) {
+		return responseCode == 500;
 	}
 }

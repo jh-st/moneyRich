@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import com.money.rich.common.response.SearchApiResult;
@@ -54,7 +55,7 @@ public class SearchUtils {
 	}
 
 	private String readBody(InputStream body){
-		InputStreamReader streamReader = new InputStreamReader(body);
+		InputStreamReader streamReader = new InputStreamReader(body, StandardCharsets.UTF_8);
 
 		try (BufferedReader lineReader = new BufferedReader(streamReader)) {
 			StringBuilder responseBody = new StringBuilder();
